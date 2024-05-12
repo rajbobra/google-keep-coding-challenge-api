@@ -1,0 +1,26 @@
+{
+  "name": "google-keep-coding-challenge-api",
+  "version": "1.0.0",
+  "description": "Coding Challenge - Google Keep REST API",
+  "main": "app.js",
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/rajbobra/google-keep-coding-challenge-api.git"
+  },
+  "author": "Raj B",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7",
+    "uuid": "^9.0.1"
+  },
+  "bugs": {
+    "url": "https://github.com/rajbobra/google-keep-coding-challenge-api/issues"
+  },
+  "homepage": "https://github.com/rajbobra/google-keep-coding-challenge-api#readme"
+}

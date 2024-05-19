@@ -15,6 +15,16 @@ class NotesController {
         }
     };
 
+    static async getNoteById(request, response) {
+        try {
+            const note = await Note.findByPk(request.params.id);
+            response.status(200).json(note);
+        } catch(error) {
+            console.error(error);
+            response.status(500).json({ message: 'Server Error getting notes from DB' });
+        }
+    };
+
     static async postNote(request, response) {
         try {
             const { id, title, content } = request.body;

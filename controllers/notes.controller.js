@@ -18,8 +18,8 @@ class NotesController {
     static async postNote(request, response) {
         try {
             const { id, title, content } = request.body;
-            const note = await Note.create({id, title, content});
-            response.status(200).json(note);
+            await Note.create({id, title, content});
+            response.status(200).json({ message: `Note with id ${id} successfully added.` });
         } catch(error) {
             console.error(error);
             response.status(500).json({ message: 'Server Error adding note' });
@@ -29,8 +29,20 @@ class NotesController {
     static async deleteNote(request, response) {
         try {
             const idToBeDeleted = request.params.id;
-            const note = await Note.destroy({where: {id: idToBeDeleted}});
+            await Note.destroy({where: {id: idToBeDeleted}});
             response.status(200).json({ message: `Note with id ${idToBeDeleted} successfully deleted.` });
+        } catch(error) {
+            console.error(error);
+            response.status(500).json({ message: 'Server Error adding note' });
+        }
+    }
+
+    static async updateNote(request, response) {
+        try {
+            const idToBeUpdated = request.params.id;
+            const { title, content} = request.body;
+            const note = await Note.update({title: title, content: content}, {where: {id: idToBeUpdated}});
+            response.status(200).json({ message: `Note with id ${idToBeUpdated} successfully updated.` });
         } catch(error) {
             console.error(error);
             response.status(500).json({ message: 'Server Error adding note' });
